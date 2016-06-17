@@ -1,8 +1,11 @@
+//createStore(reducer, [initialState], [enhancer])
+////http://redux.js.org/docs/api/createStore.html
 import { createStore, compose } from 'redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import {browserHistory } from 'react-router';
+import {browserHistory} from 'react-router';
 
 //import the root reducer
+//Actions describe the fact that something happened, but don’t specify how the application’s state changes in response. This is the job of a reducer.
 import rootReducer from './reducers/index';
 import comments from './data/comments';
 import posts from './data/posts';
@@ -20,4 +23,10 @@ const enhancers = compose(
 const store = createStore(rootReducer, defaultState, enhancers);
 export const history = syncHistoryWithStore(browserHistory, store);
 
+if(module.hot) {
+	module.hot.accept('./reducers/', () => {
+		const nextRootReducer = require('./reducers/index').default;
+		store.replaceReducer(nextRootReducer);
+	});
+}
 export default store;

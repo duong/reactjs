@@ -11,6 +11,7 @@ const Single = React.createClass({
 
     const postComments = this.props.comments[postId] || [];
 
+
     return (
       <div className="single-photo">
         <Photo i={i} post={post} {...this.props} />

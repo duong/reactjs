@@ -4,11 +4,14 @@ import * as actionCreators from '../actions/actionCreators';
 import Main from './Main';
 
 function mapStateToProps(state) {
+	console.log('call mapStateToProps', state);
   return {
     posts: state.posts,
     comments: state.comments
   }
 }
+
+
 
 function mapDispachToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch);
