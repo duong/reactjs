@@ -14,9 +14,7 @@ import posts from '../data/posts';
 
 //create an object for the default data
 const defaultState = {
-	posts,
-	comments,
-	postsList: {posts: {}}
+	comments
 }
 
 const enhancers = compose(
