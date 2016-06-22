@@ -32,16 +32,14 @@ export const RESET_DELETED_POST = 'RESET_DELETED_POST';
 
 
 
-const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://stagram-api.local-server.com' : 'http://stagram-api.local-server.com';
+//const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://stagram-api.local-server.com' : 'http://stagram-api.local-server.com';
+const ROOT_URL = "http://localhost:8089"
 export function fetchPosts() {
-  console.log('url', ROOT_URL);
-  console.log('fetch post');
   const request = axios({
     method: 'get',
     url: `${ROOT_URL}/posts`,
     headers: []
   });
-console.log('request', request);
   return {
     type: FETCH_POSTS,
     payload: request
@@ -49,7 +47,6 @@ console.log('request', request);
 }
 
 export function fetchPostsSuccess(posts) {
-   console.log('fetch post success');
   return {
     type: FETCH_POSTS_SUCCESS,
     payload: posts

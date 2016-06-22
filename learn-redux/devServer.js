@@ -4,6 +4,7 @@ var webpack = require('webpack');
 var config = require('./webpack.config.dev');
 
 var app = express();
+var port = 8088;
 var compiler = webpack(config);
 
 app.use(require('webpack-dev-middleware')(compiler, {
@@ -17,11 +18,10 @@ app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.listen(7777, 'localhost', function(err) {
+app.listen(port, 'localhost', function(err) {
   if (err) {
     console.log(err);
     return;
   }
-
-  console.log('Listening at http://localhost:7777');
+  console.log('Listening at http://localhost:' + port);
 });
