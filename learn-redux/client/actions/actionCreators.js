@@ -1,5 +1,6 @@
 // increment the link number
 export function increment(index) {
+  console.log('increment like nhu');
   return {
     type: 'INCREMENT_LIKES',
     index

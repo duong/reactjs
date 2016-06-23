@@ -30,7 +30,13 @@ export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 export const RESET_DELETED_POST = 'RESET_DELETED_POST';
 
-
+export function increment(index) {
+  console.log('increment like here');
+  return {
+    type: 'INCREMENT_LIKES',
+    index
+  }
+}
 
 //const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://stagram-api.local-server.com' : 'http://stagram-api.local-server.com';
 const ROOT_URL = "http://localhost:8089"

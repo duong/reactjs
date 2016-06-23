@@ -2,18 +2,18 @@ import React from 'react';
 import {render} from 'react-dom';
 //import css
 import css from './styles/style.styl';
-import Single from './components/Single';
+
 import PhotoGrid from './components/PhotoGrid';
 
 import App from './pages/App';
-import Home from './pages/HomeIndex';
+import HomeIndex from './pages/HomeIndex';
+import SinglePhoto from './pages/SinglePhoto';
 //import react router deps
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 export default (
     <Route path="/" component={App}>
-        <IndexRoute component={Home}></IndexRoute>
-        <Route path="/home" component={PhotoGrid}></Route>
-        <Route path="/view/:postId" component={Single}></Route>
+        <IndexRoute component={HomeIndex}></IndexRoute>
+        <Route path="/view/:id" component={SinglePhoto}></Route>
     </Route>
 );

@@ -3,14 +3,19 @@ import Photo from './Photo';
 import Comments from './Comments';
 
 const Single = React.createClass({
+  componentWillMount() {
+      this.props.fetchPosts();
+  },
   render() {
-    const { postId } = this.props.params;
+    console.log('xprops', this.props);
+    const { photoId } = this.props;
 
-    const i = this.props.posts.findIndex((post) => post.code === postId);
-    const post = this.props.posts[i];
+    const i = this.props.postsList.posts.findIndex((post) => post.code === photoId);
+    const post = this.props.postsList.posts[i];
+    console.log('post', post);
 
-    const postComments = this.props.comments[postId] || [];
-
+    const postComments = this.props.comments[photoId] || [];
+    
 
     return (
       <div className="single-photo">

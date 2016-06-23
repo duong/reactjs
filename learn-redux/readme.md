@@ -14,3 +14,4 @@ Run `npm build` to create a distro folder and a bundle.js file.
 
 
 ## Mongo db
+First install mongo db on your local with default port 27017 and start it

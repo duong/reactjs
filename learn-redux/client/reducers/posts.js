@@ -1,19 +1,26 @@
 import {
+  //import actions for executes list posts
 	FETCH_POSTS, FETCH_POSTS_SUCCESS, FETCH_POSTS_FAILURE, RESET_POSTS,
+  //import actions for executes single post
 	FETCH_POST, FETCH_POST_SUCCESS,  FETCH_POST_FAILURE, RESET_ACTIVE_POST,
+  //import actions  to created new single post
 	CREATE_POST, CREATE_POST_SUCCESS, CREATE_POST_FAILURE, RESET_NEW_POST,
+  //import actions to delete single post
 	DELETE_POST, DELETE_POST_SUCCESS, DELETE_POST_FAILURE, RESET_DELETED_POST,
+  //import action to validate record
   VALIDATE_POST_FIELDS,VALIDATE_POST_FIELDS_SUCCESS, VALIDATE_POST_FIELDS_FAILURE, RESET_POST_FIELDS
 } from '../actions/posts';
 
-
-	const INITIAL_STATE = { postsList: {posts: [], error:null, loading: false},  
-							newPost:{post:null, error: null, loading: false}, 
-							activePost:{post:null, error:null, loading: false}, 
-							deletedPost: {post: null, error:null, loading: false},
-						};
+//default state
+const INITIAL_STATE = {
+  postsList: {posts: [], error:null, loading: false},  
+	newPost:{post:null, error: null, loading: false}, 
+	activePost:{post:null, error:null, loading: false}, 
+	deletedPost: {post: null, error:null, loading: false},
+};
 
 export default function(state = INITIAL_STATE, action) {
+  console.log('test data', ...state);
   let error;
   switch(action.type) {
 

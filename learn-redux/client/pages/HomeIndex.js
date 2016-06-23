@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import HomeContainer from '../containers/HomeContainer.js';
-import Photo from '../components/Photo';
-class Home extends Component {
+class HomeIndex extends Component {
   render() {
     return (
       <div>
@@ -10,4 +9,4 @@ class Home extends Component {
     );
   }
 }
-export default Home;
+export default HomeIndex;

@@ -8,7 +8,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
 import store, { history } from './stores/configureStore';
 import routes from './routes';
-console.log('a');
+
 ReactDOM.render(
 	<Provider store={store}>
 		<Router history={history}  routes={routes} />
