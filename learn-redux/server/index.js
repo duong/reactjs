@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
@@ -141,6 +142,16 @@ app.delete("/posts/:id", function(req, res) {
   });
 });
 
+app.delete("/postsx", function(req, res) {
+  db.collection(POSTS_COLLECTION).deleteMany({}, function(err, result) {
+    if (err) {
+      handleError(res, err.message, "Failed to delete post");
+    } else {
+      res.status(204).end();
+    }
+  });
+});
+
 
 /*  "/posts"
  *    GET: finds all posts
@@ -188,16 +199,29 @@ app.get("/comments/:id", function(req, res) {
 });
 
 app.put("/comments/:id", function(req, res) {
-  var updateDoc = req.body;
-  delete updateDoc._id;
 
-  db.collection(COMMENTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+  db.collection(COMMENTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
     if (err) {
-      handleError(res, err.message, "Failed to update post");
+      handleError(res, err.message, "Failed to get post");
     } else {
-      res.status(204).end();
+      var postId = req.body.postId;
+      doc[postId].push(req.body.comment);
+      var updateDoc = doc;
+      delete updateDoc._id;
+      // console.log('docxxx ', doc);
+      db.collection(COMMENTS_COLLECTION).updateOne({_id: new ObjectID(req.params.id)}, updateDoc, function(err, doc) {
+        if (err) {
+          handleError(res, err.message, "Failed to update post");
+        } else {
+          console.log('sucess', updateDoc);
+          res.status(204).end();
+        }
+      });
     }
   });
+
+
+  
 });
 
 app.delete("/comments/:id", function(req, res) {
@@ -209,3 +233,4 @@ app.delete("/comments/:id", function(req, res) {
     }
   });
 });
+

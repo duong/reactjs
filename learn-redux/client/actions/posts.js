@@ -30,16 +30,48 @@ export const DELETE_POST_SUCCESS = 'DELETE_POST_SUCCESS';
 export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 export const RESET_DELETED_POST = 'RESET_DELETED_POST';
 
-export function increment(index) {
-  console.log('increment like here');
+const ROOT_URL = "http://localhost:8089"
+export function increment(index, post) {
+  post.likes +=1;
+  const request = axios({
+    method: 'put',
+    data: post,
+    url: `${ROOT_URL}/posts/${post._id}`,
+    headers: []
+  });
   return {
     type: 'INCREMENT_LIKES',
     index
   }
 }
 
+// add comment
+export function addComment(postId, author, comment) {
+  console.log('data - ', postId, author, comment);
+  const request = axios({
+    method: 'put',
+    data: {postId: postId, comment: {text: comment, user: author}},
+    url: `${ROOT_URL}/comments/5763604d023618481640acff`,
+    headers: []
+  });
+  return {
+    type: 'ADD_COMMENT',
+    postId,
+    author,
+    comment
+  }
+}
+
+
+export function incrementLike(index, post) {
+  //tobe define
+}
+
+export function incrementLikeSuccess(post) {
+  //tobe define
+}
 //const ROOT_URL = location.href.indexOf('localhost') > 0 ? 'http://stagram-api.local-server.com' : 'http://stagram-api.local-server.com';
-const ROOT_URL = "http://localhost:8089"
+
 export function fetchPosts() {
   const request = axios({
     method: 'get',

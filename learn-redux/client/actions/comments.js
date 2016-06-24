@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 //comment list
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';

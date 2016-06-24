@@ -1,12 +1,11 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions/actionCreators';
-import { fetchPosts, fetchPostsSuccess, fetchPostsFailure } from '../actions/posts';
+import { addComment, increment, fetchPosts, fetchPostsSuccess, fetchPostsFailure } from '../actions/posts';
 
 import Single from '../components/Single';
 
 function mapStateToProps(state, ownProps) {
-  console.log('ownProps', ownProps);
   return {
     comments: state.comments,
     postsList: state.posts.postsList,
@@ -20,6 +19,12 @@ function mapDispachToProps(dispatch) {
       dispatch(fetchPosts()).then((response) => {
             !response.error ? dispatch(fetchPostsSuccess(response.payload)) : dispatch(fetchPostsFailure(response.payload));
           });
+    },
+    like: (index, post) => {
+      dispatch(increment(index, post));
+    },
+    addComment: (photoId, author, comment) => {
+      dispatch(addComment(photoId, author, comment));
     },
     test: actionCreators
   }

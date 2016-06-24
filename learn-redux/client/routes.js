@@ -3,8 +3,6 @@ import {render} from 'react-dom';
 //import css
 import css from './styles/style.styl';
 
-import PhotoGrid from './components/PhotoGrid';
-
 import App from './pages/App';
 import HomeIndex from './pages/HomeIndex';
 import SinglePhoto from './pages/SinglePhoto';

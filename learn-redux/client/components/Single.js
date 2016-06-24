@@ -11,10 +11,12 @@ const Single = React.createClass({
     const { photoId } = this.props;
 
     const i = this.props.postsList.posts.findIndex((post) => post.code === photoId);
+    console.log('postId', i);
     const post = this.props.postsList.posts[i];
     console.log('post', post);
 
     const postComments = this.props.comments[photoId] || [];
+    console.log('postcommnet', postComments);
     
 
     return (
