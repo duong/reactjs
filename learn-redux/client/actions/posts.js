@@ -31,6 +31,14 @@ export const DELETE_POST_FAILURE = 'DELETE_POST_FAILURE';
 export const RESET_DELETED_POST = 'RESET_DELETED_POST';
 
 const ROOT_URL = "http://localhost:8089"
+
+//facebooklogin
+export function facebookLogin(facebookResponse) {
+  return {
+    type: 'FACEBOOK_LOGIN',
+    response: facebookResponse
+  }
+}
 export function increment(index, post) {
   post.likes +=1;
   const request = axios({

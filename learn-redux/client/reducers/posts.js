@@ -30,6 +30,15 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
   let error;
   switch(action.type) {
+
+    //facebook login
+    case 'FACEBOOK_LOGIN': 
+      return {
+      ...state,
+      user: {
+        status: 'authenticated'
+      } 
+    }; 
     case 'INCREMENT_LIKES': //increment like when user click on like button
       console.log("Incrementing Likes!!");
       const i = action.index;

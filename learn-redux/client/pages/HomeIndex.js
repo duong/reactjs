@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import HomeContainer from '../containers/HomeContainer.js';
+import HeaderContainer from '../containers/HeaderContainer.js';
+
+
 class HomeIndex extends Component {
   render() {
     return (
       <div>
+        <HeaderContainer type="posts_index"/>
+      	
       	<HomeContainer />
       </div>
     );
