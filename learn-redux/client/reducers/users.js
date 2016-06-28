@@ -14,6 +14,12 @@ const INITIAL_STATE = {user: null, status:null, error:null, loading: false};
 export default function(state = INITIAL_STATE, action) {
   let error;
   switch(action.type) {
+  	 //facebook login
+    case 'FACEBOOK_LOGIN': 
+      return {
+      ...state,
+      status: action.facebookResponse
+    }; 
     default:
         return state;
   }

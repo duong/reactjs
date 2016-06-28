@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts, resetDeletedPost, deletePost, deletePostSuccess, deletePostFailure } from '../actions/posts';
+import { facebookLogin, fetchPosts, resetDeletedPost, deletePost, deletePostSuccess, deletePostFailure } from '../actions/posts';
 import Header from '../components/Header.js';
 
 
 
 function mapStateToProps(state) {
+  // console.log('Header container state', state);
   return { 
-    authenticatedUser: state.user.status === 'authenticated' ? state.user.user : null,
+    authenticated: state.user.status === 'authenticated' ? true : null,
     user: state.user
   };
 }
@@ -15,7 +16,6 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
   	 facebookLogin: (facebookResponse) => {
-      console.log('xxabc', facebookResponse);
         dispatch(facebookLogin(facebookResponse));
      },
 

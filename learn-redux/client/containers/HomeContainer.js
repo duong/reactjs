@@ -5,7 +5,9 @@ import { increment, fetchPosts, fetchPostsSuccess, fetchPostsFailure } from '../
 import Home from '../components/Home';
 
 function mapStateToProps(state) {
+  // console.log('Home container state:', state);
   return {
+    authenticated: state.user.status === 'authenticated' ? true : null,
     comments: state.comments,
     postsList: state.posts.postsList
 

@@ -36,7 +36,7 @@ const ROOT_URL = "http://localhost:8089"
 export function facebookLogin(facebookResponse) {
   return {
     type: 'FACEBOOK_LOGIN',
-    response: facebookResponse
+    facebookResponse: facebookResponse
   }
 }
 export function increment(index, post) {

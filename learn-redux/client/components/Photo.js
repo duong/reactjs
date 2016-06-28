@@ -3,8 +3,15 @@ import { Link } from 'react-router';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
 const Photo = React.createClass({
+
+  propTypes: {
+    post: React.PropTypes.object,
+    like: React.PropTypes.func,
+    i: React.PropTypes.number,
+    comments: React.PropTypes.object
+  },
   render() {
-    const { post, i, comments } = this.props;
+    const { post, i, comments, like } = this.props;
     if(typeof post == 'undefined') {
       return (<div>Loading..</div>);
     }
@@ -24,7 +31,7 @@ const Photo = React.createClass({
         <figcaption>
           <p>{post.caption}</p>
           <div className="control-buttons">
-            <button onClick={this.props.like.bind(null, i, post)} className="likes">&hearts; {post.likes}</button>
+            <button onClick={like.bind(null, i, post)} className="likes">&hearts; {post.likes}</button>
             <Link className="button" to={`/view/${post.code}`}>
               <span className="comment-count">
                 <span className="speech-bubble"></span>

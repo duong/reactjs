@@ -3,7 +3,7 @@ import styles from '../../styles/facebook.scss';
 
 class FacebookLogin extends React.Component {
 
-  static propTypesx = {
+  static propType = {
     callback: PropTypes.func.isRequired,
     appId: PropTypes.string.isRequired,
     xfbml: PropTypes.bool,
@@ -68,9 +68,9 @@ class FacebookLogin extends React.Component {
 
   responseApi = (authResponse) => {
     window.FB.api('/me', { fields: this.props.fields }, (me) => {
-      Object.assign(me, authResponse, 'hello world');
-      console.log('propsx', this.props);
+      Object.assign(me, authResponse);
       this.props.callback(me);
+      this.props.facebookLogin('authenticated');
     });
   };
 
@@ -79,7 +79,8 @@ class FacebookLogin extends React.Component {
       this.responseApi(response.authResponse);
     } else {
       if (this.props.callback) {
-        this.props.callback({ status: response.status });
+        this.props.callback({ status: response.status, 'props': this.props });
+        this.props.facebookLogin('no-authenticated');
       }
     }
   };
